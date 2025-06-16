@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <h1>Please Sign up</h1>
+
+    <form action="" method="POST">
+
+        {% csrf_token %}
+
+        <input type="text" placeholder="Enter name" name="name" required>
+
+        <input type="email" placeholder="Enter email" name="email" required>
+
+        <input type="password" placeholder="password" name="password" required>
+
+        <input type="password" placeholder="Approve your password" name="password2" required>
+
+        <input type="submit" value="Log In">
+
+    </form>
+
+    <a href="{% url 'login' %}" class="logInLink">Log In</a>
+
+{% endblock %}

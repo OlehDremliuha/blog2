@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+
+{% block title %}Edit user{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+    <p>Change name</p>
+    <form action="" method="POST">
+            {% csrf_token %}
+            <input type="text" name="userName" value="{{userProfile.userId.username}}" >
+            <input type="submit" value="Change name">
+    </form><br><br>
+
+    <p>Change avatar</p>
+    <form action="{% url 'changeAvatar' userProfile.userId.id %}" method="POST" enctype="multipart/form-data">
+        {%  csrf_token %}
+        <input type="file" accept="image/png, image/jpeg" name="avatar" required>
+        <input type="submit" value="Change avatar">
+    </form><br><br>
+
+    <p>Add bio</p>
+    <form action="{% url 'changeBio' userProfile.userId.id %}" method="POST">
+        {%  csrf_token %}
+        <textarea placeholder="Enter your bio" name="bio" style="min-width: 30%; min-height: 150px;">{{userProfile.bio}}</textarea><br>
+        <input type="submit" value="Change bio">
+    </form><br><br>
+
+
+    <p>Change mail</p>
+    <form action="" method="POST">
+            {% csrf_token %}
+            <input style="width: 40%;" type="email" name="userMail" value="{{userProfile.userId.email}}" >
+            <input type="submit" value="Change mail">
+    </form><br><br>
+    <p>Change password</p>
+    <form action="" method="POST">
+            {% csrf_token %}
+            <input type="password" name="password" placeholder="Enter password" >
+            <input type="password" name="passwordValid" placeholder="Aprove password" >
+            <input type="submit" value="Change password">
+    </form>
+    {% endif %}
+
+{% endblock %}

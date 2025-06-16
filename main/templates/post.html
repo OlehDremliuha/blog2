@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block title %}{{post.title}}{% endblock %}
+
+{% block content %}
+    <h1>{{post.title}}</h1>
+
+            <img class="postImg" src={{post.image.url}}>
+            <p>{{post.text}}...</p><br>
+            <span>Posted by </span><a href="{% url 'profile' post.userId.id %}" style="color: blue; font-size: 1.2em;">{{post.userId}}</a>
+
+    {% if user.is_authenticated %}
+
+        <form method="POST" action="{% url 'addComment' %}" class="comentForm">
+
+            {% csrf_token %}
+
+            <input type="hidden" value="{{post.id}}" name="postId">
+
+            <textarea placeholder="Enter comment" name="comentText"></textarea>
+
+            <input type="submit" value="Add comment" >
+
+        </form>
+
+    {% endif %}
+
+    {% if comments %}
+        {% for comment in comments %}
+            <div class="commentCard">
+                <a href="{% url 'profile' comment.userId.id %}" style="color: blue; font-size: 1.2em;">{{comment.userId}}</a>
+                <p style="font-size: 1.2em; font-weight: 900;">{{comment.text}}</p>
+                <span>{{comment.date}}</span>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No one comments found</p>
+    {% endif %}
+{% endblock %}

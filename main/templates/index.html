@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block title %}Main{% endblock %}
+
+{% block content %}
+    <h1>Main page</h1>
+
+    {% for item in posts %}
+        <div class="postCard">
+            <img class="postImg" src={{item.image.url}}>
+            <h2>{{item.title}}</h2>
+            <a href="{% url 'profile' item.userId.id %}" style="color: blue; font-size: 1.2em;">{{item.userId}}</a>
+            <a class="postBtn" href="{% url 'article' item.id %}">More</a>
+        </div>
+    {% endfor %}
+{% endblock %}

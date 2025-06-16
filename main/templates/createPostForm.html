@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% block title %}Create Post{% endblock %}
+
+{% block content %}
+    <h1 class="createPostHeadline">Create new Post</h1>
+
+    <form action="" method="POST" enctype="multipart/form-data" class="addPostForm">
+
+        {% csrf_token %}
+
+        <input type="hidden" value={{auth_user.id}} name="userId" disabled>
+
+        <input type="text" placeholder="Enter title" name="title">
+
+        <textarea placeholder="Enter text" name="text"></textarea>
+
+        <input type="file" name="image"> 
+
+        <input type="submit" value="Create Post">
+
+    </form>
+
+{% endblock %}
