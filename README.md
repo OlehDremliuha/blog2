@@ -26,19 +26,25 @@
 
 git clone https://github.com/your-username/blog-project.git
 cd blog-project
-Створити та активувати віртуальне середовище:
+
+2. Створити та активувати віртуальне середовище:
 
 python -m venv venv
 source venv/bin/activate  # або venv\Scripts\activate на Windows
-Встановити залежності:
+
+3. Встановити залежності:
 
 pip install -r requirements.txt
-Застосувати міграції:
+
+4. Застосувати міграції:
 
 python manage.py migrate
-Запустити сервер:
+
+5. Запустити сервер:
 
 python manage.py runserver
-Відкрити браузер і перейти за адресою:
+
+6. Відкрити браузер і перейти за адресою:
+   
 http://127.0.0.1:8000/
 
