@@ -1,0 +1,10 @@
+- name: Install Selenium test runner
+  run: |
+    npm install -g selenium-side-runner
+    wget https://chromedriver.storage.googleapis.com/114.0.5735.90/chromedriver_linux64.zip
+    unzip chromedriver_linux64.zip
+    mv chromedriver /usr/local/bin/
+
+- name: Run Selenium IDE tests
+  run: |
+    selenium-side-runner --server http://localhost:8000 login_test.side

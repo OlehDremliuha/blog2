@@ -1,0 +1,52 @@
+{
+  "id": "login-test-suite",
+  "version": "2.0",
+  "name": "Login Tests",
+  "url": "http://localhost:8000",
+  "tests": [
+    {
+      "id": "test-login-success",
+      "name": "Successful Login",
+      "commands": [
+        {
+          "command": "open",
+          "target": "/login/",
+          "value": ""
+        },
+        {
+          "command": "type",
+          "target": "name=username",
+          "value": "testuser"
+        },
+        {
+          "command": "type",
+          "target": "name=password",
+          "value": "testpass123"
+        },
+        {
+          "command": "click",
+          "target": "css=button[type='submit']",
+          "value": ""
+        },
+        {
+          "command": "assertUrl",
+          "target": "http://localhost:8000/profile/",
+          "value": ""
+        }
+      ]
+    }
+  ],
+  "suites": [
+    {
+      "id": "suite-1",
+      "name": "Login Suite",
+      "persistSession": false,
+      "parallel": false,
+      "timeout": 300,
+      "tests": ["test-login-success"]
+    }
+  ],
+  "plugins": [],
+  "urls": ["http://localhost:8000"],
+  "testsPerSuite": 1
+}
