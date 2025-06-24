@@ -8,3 +8,19 @@
 - name: Run Selenium IDE tests
   run: |
     selenium-side-runner --server http://localhost:8000 login_test.side
+
+
+- name: Set up Python
+  uses: actions/setup-python@v4
+  with:
+    python-version: '3.11'
+
+- name: Install Robot Framework + Selenium
+  run: |
+    pip install robotframework
+    pip install robotframework-seleniumlibrary
+    pip install webdrivermanager
+    webdrivermanager chrome
+
+- name: Run Robot Framework tests
+  run: robot tests/robot
